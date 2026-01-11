@@ -24,29 +24,138 @@ class pageAccueil extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Magazine Infos',style: TextStyle(color: Colors.black),),
+        backgroundColor: Colors.pink,
+        title: const Text('Magazine Infos'),
         centerTitle: true,
-        backgroundColor: Colors.deepOrangeAccent,
-        leading: IconButton(onPressed: (){}, icon: Icon(Icons.menu, color: Colors.white,)),
-        actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.search, color: Colors.white,)),
-          IconButton(onPressed: (){}, icon: Icon(Icons.more_vert, color: Colors.white,)),
+        leading: IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
+      ),
+      body: Column(
+        children: [
+          Image(
+            image: AssetImage('assets/images/magazineInfo.jpg'),
+            fit: BoxFit.fill,
+          ),
+          PartieTitre(),
+          PartieTexte(),
+          PartieIcone(),
+          PartieRubrique(),
         ],
       ),
-      body: Center(
-        child: Image(image: AssetImage('assets/images/magazineInfo.jpg'),
-        fit: BoxFit.fill,),
+    );
+  }
+}
+
+class PartieTitre extends StatelessWidget {
+  const PartieTitre({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Bienvenue au Magazine Infos",
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
+          ),
+          Text(
+            "Votre magazine numerique, votre source d\'inspiration",
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Tu as cliqué dessus'),
+    );
+  }
+}
+
+class PartieTexte extends StatelessWidget {
+  const PartieTexte({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Text(
+        "Magazine Infos est bien plus qu\'un simple magazine d\'informations. C'est votre passerelle vers le monde, une source inestimable de connaissances et d\'actualités soigneusement sélectionnées pour vous éclairer sur les enjeux mondiaux, la culture, la science, la, et voir même le divertissement (le jeux).",
+      ),
+    );
+  }
+}
+
+class PartieIcone extends StatelessWidget {
+  const PartieIcone({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(bottom: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Container(
+            padding: EdgeInsets.all(20),
+            child: Column(
+              children: [
+                Icon(Icons.phone, color: Colors.pink),
+                SizedBox(height: 5),
+                Text("Tel".toUpperCase(), style: TextStyle(color: Colors.pink)),
+              ],
             ),
-          );
-        },
-        child: Text("Click",style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16, ),),
-        backgroundColor: Colors.deepOrangeAccent,
+          ),
+          Container(
+            padding: EdgeInsets.all(20),
+            child: Column(
+              children: [
+                Icon(Icons.email, color: Colors.pink),
+                SizedBox(height: 5),
+                Text(
+                  "Mail".toUpperCase(),
+                  style: TextStyle(color: Colors.pink),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(20),
+            child: Column(
+              children: [
+                Icon(Icons.share, color: Colors.pink),
+                SizedBox(height: 5),
+                Text(
+                  "Partager".toUpperCase(),
+                  style: TextStyle(color: Colors.pink),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class PartieRubrique extends StatelessWidget {
+  const PartieRubrique({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image(image: AssetImage('assets/images/image1.jpg')),
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image(image: AssetImage('assets/images/image2.jpg')),
+          ),
+        ],
       ),
     );
   }
